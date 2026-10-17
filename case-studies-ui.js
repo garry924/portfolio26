@@ -143,7 +143,7 @@ function renderCaseStudy(project) {
         ${section.body ? `<p class="case-body">${section.body}</p>` : ''}
         ${content}
       </section>`;
-  }).join('');
+  });
 
   view.innerHTML = `
     <section class="case-hero">
