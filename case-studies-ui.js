@@ -52,7 +52,6 @@ function renderFidelityCompare(project) {
   const first = project.media.screens.find((s) => s.key === 'home') || project.media.screens[0];
   return `
     <section class="case-section pt-compare-section">
-      <div class="case-section-label"><span class="section-number">03</span><h2>From wireframe to final</h2></div>
       <p class="pt-compare-hint">Tap any screen in the scroll above to compare its low-fidelity, medium-fidelity, and final designs side by side.</p>
       <span class="pt-current-screen" id="ptScreenName">Showing: ${esc(first.label)}</span>
       <div class="pt-compare">
