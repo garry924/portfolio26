@@ -80,10 +80,7 @@ function bindFidelityCompare(project) {
   const nameEl = view.querySelector('#ptScreenName');
   const compare = view.querySelector('.pt-compare');
 
-  marquee.addEventListener('click', (event) => {
-    const btn = event.target.closest('.pt-shot');
-    if (!btn) return;
-    const key = btn.dataset.screen;
+  const showScreen = (key) => {
     const screen = project.media.screens.find((s) => s.key === key);
     if (!screen) return;
 
@@ -96,6 +93,24 @@ function bindFidelityCompare(project) {
     nameEl.textContent = `Showing: ${screen.label}`;
 
     compare?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const folder = project.media.folder;
+  let pressedShot = null;
+
+  marquee.addEventListener('pointerdown', (event) => {
+    pressedShot = event.target.closest('.pt-shot');
+  });
+
+  marquee.addEventListener('pointerup', (event) => {
+    const releasedShot = event.target.closest('.pt-shot');
+    if (pressedShot && releasedShot === pressedShot) showScreen(pressedShot.dataset.screen);
+    pressedShot = null;
+  });
+
+  marquee.addEventListener('click', (event) => {
+    const btn = event.target.closest('.pt-shot');
+    if (btn) showScreen(btn.dataset.screen);
   });
 }
 

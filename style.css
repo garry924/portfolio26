@@ -2087,6 +2087,10 @@ a.case-crumb:hover {
 }
 
 /* ============================================
+   RESPONSIVE (case study)
+   ============================================ */
+
+@media (max-width: 700px) {
   .pt-compare {
     grid-template-columns: 1fr;
   }
