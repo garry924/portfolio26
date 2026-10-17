@@ -1,5 +1,8 @@
 import './style.css';
 import Chart from 'chart.js/auto';
+import { initCaseStudyRouting } from './case-studies-ui.js';
+
+initCaseStudyRouting();
 
 // --- STICKY NAV SCROLL EFFECT ---
 const nav = document.getElementById('nav');
@@ -542,17 +545,6 @@ function initProjectLikes() {
   });
 
   fetchLiveLikesFromSheet();
-
-  // Card click opens URL (excluding buttons)
-  const cards = document.querySelectorAll('.project');
-  cards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('.like-btn')) return;
-      if (e.target.closest('.view-link')) return;
-      const url = card.dataset.url;
-      if (url) window.open(url, '_blank', 'noopener,noreferrer');
-    });
-  });
 }
 
 function initTripGallery() {
