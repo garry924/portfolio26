@@ -27,7 +27,7 @@ function renderMedia(project) {
     ];
     return `<div class="case-hero-media case-gallery">${shots.map(([file, label]) => `
       <figure class="case-gallery-item">
-        <img src="/upcoming-projects/${file}" alt="Weekend Trip ${label} screen" loading="lazy" />
+        <img src="/portfolio26/upcoming-projects/${file}" alt="Weekend Trip ${label} screen" loading="lazy" />
         <figcaption>${label}</figcaption>
       </figure>`).join('')}</div>`;
   }
@@ -38,7 +38,7 @@ function renderMedia(project) {
       <div class="pt-track">
         ${doubled.map((s) => `
           <button class="pt-shot" type="button" data-screen="${esc(s.key)}" aria-label="Show ${esc(s.label)} design process">
-            <img src="/${folder}/final/${esc(s.key)}.webp" alt="${esc(project.name)} ${esc(s.label)} screen, final design" loading="lazy" />
+            <img src="/portfolio26/${folder}/final/${esc(s.key)}.webp" alt="${esc(project.name)} ${esc(s.label)} screen, final design" loading="lazy" />
             <span>${esc(s.label)}</span>
           </button>`).join('')}
       </div>
@@ -58,15 +58,15 @@ function renderFidelityCompare(project) {
       <div class="pt-compare">
         <figure class="pt-fidelity-col">
           <span class="pt-col-label">Low fidelity</span>
-          <img id="ptLow" src="/${folder}/lowfi/${esc(first.key)}.webp" alt="${esc(first.label)} low-fidelity wireframe" />
+          <img id="ptLow" src="/portfolio26/${folder}/lowfi/${esc(first.key)}.webp" alt="${esc(first.label)} low-fidelity wireframe" />
         </figure>
         <figure class="pt-fidelity-col">
           <span class="pt-col-label">Medium fidelity</span>
-          <img id="ptMedium" src="/${folder}/medium/${esc(first.key)}.webp" alt="${esc(first.label)} medium-fidelity design" />
+          <img id="ptMedium" src="/portfolio26/${folder}/medium/${esc(first.key)}.webp" alt="${esc(first.label)} medium-fidelity design" />
         </figure>
         <figure class="pt-fidelity-col">
           <span class="pt-col-label">Final (high fidelity)</span>
-          <img id="ptFinal" src="/${folder}/final/${esc(first.key)}.webp" alt="${esc(first.label)} final design" />
+          <img id="ptFinal" src="/portfolio26/${folder}/final/${esc(first.key)}.webp" alt="${esc(first.label)} final design" />
         </figure>
       </div>
     </section>`;
