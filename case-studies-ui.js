@@ -32,12 +32,13 @@ function renderMedia(project) {
       </figure>`).join('')}</div>`;
   }
   if (project.media.type === 'fidelity') {
+    const folder = project.media.folder;
     const doubled = [...project.media.screens, ...project.media.screens];
     return `<div class="case-hero-media pt-marquee" data-pt-marquee aria-label="Final screens — endless scroll">
       <div class="pt-track">
         ${doubled.map((s) => `
           <button class="pt-shot" type="button" data-screen="${esc(s.key)}" aria-label="Show ${esc(s.label)} design process">
-            <img src="/pawtracks/final/${esc(s.key)}.webp" alt="${esc(project.name)} ${esc(s.label)} screen, final design" loading="lazy" />
+            <img src="/${folder}/final/${esc(s.key)}.webp" alt="${esc(project.name)} ${esc(s.label)} screen, final design" loading="lazy" />
             <span>${esc(s.label)}</span>
           </button>`).join('')}
       </div>
@@ -48,6 +49,7 @@ function renderMedia(project) {
 
 function renderFidelityCompare(project) {
   const first = project.media.screens[0];
+  const folder = project.media.folder;
   return `
     <section class="case-section pt-compare-section">
       <div class="case-section-label"><span class="section-number">03</span><h2>From wireframe to final</h2></div>
@@ -56,15 +58,15 @@ function renderFidelityCompare(project) {
       <div class="pt-compare">
         <figure class="pt-fidelity-col">
           <span class="pt-col-label">Low fidelity</span>
-          <img id="ptLow" src="/pawtracks/lowfi/${esc(first.key)}.webp" alt="${esc(first.label)} low-fidelity wireframe" />
+          <img id="ptLow" src="/${folder}/lowfi/${esc(first.key)}.webp" alt="${esc(first.label)} low-fidelity wireframe" />
         </figure>
         <figure class="pt-fidelity-col">
           <span class="pt-col-label">Medium fidelity</span>
-          <img id="ptMedium" src="/pawtracks/medium/${esc(first.key)}.webp" alt="${esc(first.label)} medium-fidelity design" />
+          <img id="ptMedium" src="/${folder}/medium/${esc(first.key)}.webp" alt="${esc(first.label)} medium-fidelity design" />
         </figure>
         <figure class="pt-fidelity-col">
           <span class="pt-col-label">Final (high fidelity)</span>
-          <img id="ptFinal" src="/pawtracks/final/${esc(first.key)}.webp" alt="${esc(first.label)} final design" />
+          <img id="ptFinal" src="/${folder}/final/${esc(first.key)}.webp" alt="${esc(first.label)} final design" />
         </figure>
       </div>
     </section>`;
@@ -86,9 +88,9 @@ function bindFidelityCompare(project) {
     const screen = project.media.screens.find((s) => s.key === key);
     if (!screen) return;
 
-    low.src = `/pawtracks/lowfi/${key}.webp`;
-    medium.src = `/pawtracks/medium/${key}.webp`;
-    final.src = `/pawtracks/final/${key}.webp`;
+    low.src = `/${folder}/lowfi/${key}.webp`;
+    medium.src = `/${folder}/medium/${key}.webp`;
+    final.src = `/${folder}/final/${key}.webp`;
     low.alt = `${screen.label} low-fidelity wireframe`;
     medium.alt = `${screen.label} medium-fidelity design`;
     final.alt = `${screen.label} final design`;

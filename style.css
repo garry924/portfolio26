@@ -675,7 +675,6 @@ main {
 #card-valueline { order: 4; }
 #card-gaurdian { order: 5; }
 #card-redthumb { order: 6; }
-#card-pawtracks { order: 7; }
 
 .trip-project-image {
   display: block;
@@ -1727,6 +1726,12 @@ a.case-crumb:hover {
   aspect-ratio: 16 / 9;
 }
 
+.case-hero-visual:has(.pt-marquee) {
+  aspect-ratio: auto;
+  background: transparent;
+  border: 0;
+}
+
 .case-hero-media {
   width: 100%;
   height: 100%;
@@ -2081,36 +2086,7 @@ a.case-crumb:hover {
   color: #117a65;
 }
 
-/* PawTracks homepage card overlay */
-.pt-card-visual {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  padding: var(--s-3);
-  text-align: center;
-}
-
-.pt-card-chip {
-  padding: 0.35rem 0.8rem;
-  color: #117a65;
-  background: rgba(17, 122, 101, 0.1);
-  border: 1px solid rgba(17, 122, 101, 0.3);
-  border-radius: var(--radius-full);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-}
-
-.pt-card-line {
-  color: var(--text-inverse);
-  font-family: var(--font-display);
-  font-size: clamp(0.95rem, 2.2vw, 1.25rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-@media (max-width: 700px) {
+/* ============================================
   .pt-compare {
     grid-template-columns: 1fr;
   }
