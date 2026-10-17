@@ -40,7 +40,7 @@ export const projects = {
     tagline: '3D Experience',
     tags: ['3D / WebGL', 'Interactive'],
     url: 'https://valueline-3d-viewer.netlify.app/',
-    media: { type: 'image', src: '/portfolio26/portfolio26/Valueline.png', alt: 'Valueline 3D Experience' },
+    media: { type: 'video', src: '/portfolio26/portfolio26/valueline.webm', alt: 'Valueline 3D Experience' },
     overview:
       'Valueline turns a static product catalogue into a 3D experience: viewers orbit, inspect, and play with the product in the browser — no app, no plugin, just WebGL.',
     problem:
@@ -106,7 +106,7 @@ export const projects = {
     tagline: '3D Earbud Exploded Acoustics',
     tags: ['3D / Product'],
     url: 'https://girikshitk.github.io/AURA-Earbud/',
-    media: { type: 'image', src: '/portfolio26/portfolio26/aura_earbud.png', alt: 'AURA 3D Earbud Exploded Acoustics' },
+    media: { type: 'video', src: '/portfolio26/portfolio26/aura-earbud.webm', alt: 'AURA 3D Earbud Exploded Acoustics' },
     overview:
       'AURA is an exploded-view 3D experience of an earbud: layers of drivers, acoustic chambers, and shell separate in space to show how sound is actually built.',
     problem:
