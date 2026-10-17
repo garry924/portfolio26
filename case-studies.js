@@ -40,7 +40,7 @@ export const projects = {
     tagline: '3D Experience',
     tags: ['3D / WebGL', 'Interactive'],
     url: 'https://valueline-3d-viewer.netlify.app/',
-    media: { type: 'image', src: '/src/assets/Valueline.png', alt: 'Valueline 3D Experience' },
+    media: { type: 'image', src: '/portfolio26/portfolio26/Valueline.png', alt: 'Valueline 3D Experience' },
     overview:
       'Valueline turns a static product catalogue into a 3D experience: viewers orbit, inspect, and play with the product in the browser — no app, no plugin, just WebGL.',
     problem:
@@ -62,7 +62,7 @@ export const projects = {
     tagline: '2D Pixel Art Game',
     tags: ['Game Design', 'Pixel Art'],
     url: 'https://www.behance.net/gallery/228367639/My-First-Game-Design-Project',
-    media: { type: 'image', src: '/src/assets/2dgame.png', alt: 'Visual Craft 2D Pixel Art Game' },
+    media: { type: 'image', src: '/portfolio26/portfolio26/2dgame.png', alt: 'Visual Craft 2D Pixel Art Game' },
     overview:
       'Visual Craft is a 2D pixel art game design project exploring tight sprite work, readable animation, and game feel — my first full game design project, documented end to end.',
     problem:
@@ -84,7 +84,7 @@ export const projects = {
     tagline: 'Pokémon 3D Figurine Catalogue',
     tags: ['3D / E-commerce'],
     url: 'https://girikshitk.github.io/RedThumb3D/',
-    media: { type: 'image', src: '/src/assets/red_thumb_landscape_16x9_(1).png', alt: 'RedThumb3D Pokémon Figurine Catalogue' },
+    media: { type: 'image', src: '/portfolio26/portfolio26/red_thumb_landscape_16x9_(1).png', alt: 'RedThumb3D Pokémon Figurine Catalogue' },
     overview:
       'RedThumb3D is a storefront concept for 3D-printable Pokémon figurines: browse a catalogue, preview each model in 3D, and queue a print — all in one flow.',
     problem:
@@ -106,7 +106,7 @@ export const projects = {
     tagline: '3D Earbud Exploded Acoustics',
     tags: ['3D / Product'],
     url: 'https://girikshitk.github.io/AURA-Earbud/',
-    media: { type: 'image', src: '/src/assets/aura_earbud.png', alt: 'AURA 3D Earbud Exploded Acoustics' },
+    media: { type: 'image', src: '/portfolio26/portfolio26/aura_earbud.png', alt: 'AURA 3D Earbud Exploded Acoustics' },
     overview:
       'AURA is an exploded-view 3D experience of an earbud: layers of drivers, acoustic chambers, and shell separate in space to show how sound is actually built.',
     problem:
