@@ -675,6 +675,7 @@ main {
 #card-valueline { order: 4; }
 #card-gaurdian { order: 5; }
 #card-redthumb { order: 6; }
+#card-pawtracks { order: 7; }
 
 .trip-project-image {
   display: block;
@@ -1938,6 +1939,185 @@ a.case-crumb:hover {
   transform: none;
   box-shadow: none;
   background: transparent;
+}
+
+/* --- PawTracks: endless screen scroll + fidelity compare --- */
+
+.pt-marquee {
+  overflow: hidden;
+  background: linear-gradient(135deg, #e8efe6, #f3ede2);
+  position: relative;
+  padding: 1rem 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+
+.pt-track {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: max-content;
+  animation: ptScroll 36s linear infinite;
+  will-change: transform;
+}
+
+.pt-marquee:hover .pt-track,
+.pt-marquee:focus-within .pt-track {
+  animation-play-state: paused;
+}
+
+.pt-shot {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 150px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  transition: transform 0.35s var(--ease-spring);
+}
+
+.pt-shot img {
+  width: 100%;
+  aspect-ratio: 440 / 956;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid rgba(23, 72, 61, 0.14);
+  box-shadow: 0 10px 22px rgba(23, 72, 61, 0.14);
+  background: #fff;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.pt-shot span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #46615b;
+  text-align: center;
+}
+
+.pt-shot:hover,
+.pt-shot:focus-visible {
+  transform: translateY(-8px);
+  outline: none;
+}
+
+.pt-shot:hover img,
+.pt-shot:focus-visible img {
+  border-color: #117a65;
+  box-shadow: 0 18px 34px rgba(17, 122, 101, 0.25);
+}
+
+.pt-shot:hover span,
+.pt-shot:focus-visible span {
+  color: #117a65;
+}
+
+@keyframes ptScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 0.5rem)); }
+}
+
+.pt-compare-hint {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: var(--s-2);
+  max-width: 620px;
+}
+
+.pt-current-screen {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #117a65;
+  margin-bottom: var(--s-2);
+}
+
+.pt-compare {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-2);
+  align-items: start;
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+}
+
+.pt-fidelity-col {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pt-fidelity-col img {
+  width: 100%;
+  aspect-ratio: 440 / 956;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fff;
+  transition: opacity 0.25s ease;
+}
+
+.pt-fidelity-col img.src-swap {
+  opacity: 0;
+}
+
+.pt-col-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.pt-col-label:last-child {
+  color: #117a65;
+}
+
+/* PawTracks homepage card overlay */
+.pt-card-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: var(--s-3);
+  text-align: center;
+}
+
+.pt-card-chip {
+  padding: 0.35rem 0.8rem;
+  color: #117a65;
+  background: rgba(17, 122, 101, 0.1);
+  border: 1px solid rgba(17, 122, 101, 0.3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+
+.pt-card-line {
+  color: var(--text-inverse);
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 700px) {
+  .pt-compare {
+    grid-template-columns: 1fr;
+  }
+
+  .pt-shot {
+    width: 122px;
+  }
 }
 
 @media (max-width: 900px) {

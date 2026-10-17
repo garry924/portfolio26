@@ -461,7 +461,8 @@ const defaultLikeCounts = {
   pixelgame: 45,
   redthumb: 31,
   aura: 61,
-  tripPlanner: 11
+  tripPlanner: 11,
+  pawtracks: 18
 };
 
 async function syncWithGoogleSheet(projectId, delta) {

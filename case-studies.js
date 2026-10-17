@@ -131,4 +131,39 @@ export const projects = {
       { value: '0', label: 'Chasing payments' },
     ],
   },
+  pawtracks: {
+    slug: 'pawtracks',
+    name: 'PawTracks',
+    tagline: 'Community-driven animal welfare platform',
+    tags: ['Product Design', 'Mobile App', 'Design Process'],
+    url: null,
+    media: {
+      type: 'fidelity',
+      screens: [
+        { key: 'welcome', label: 'Welcome' },
+        { key: 'log-in', label: 'Log in' },
+        { key: 'home', label: 'Home' },
+        { key: 'community', label: 'Community' },
+        { key: 'ai-care', label: 'AI care assistant' },
+        { key: 'report-animal', label: 'Report an animal' },
+        { key: 'donate', label: 'Donate' },
+        { key: 'shelter-details', label: 'Shelter details' },
+      ],
+    },
+    overview:
+      'PawTracks connects people who care about street animals: report an animal in need, find nearby shelters, donate supplies, and get AI-guided care instructions — all from one community-driven app.',
+    problem:
+      'Help for stray animals is scattered: one person reports, another donates, and shelters coordinate over phone calls. There is no single place where citizens, caretakers, and shelters see the same picture, so animals fall through the cracks.',
+    highlights: [
+      { title: 'Report and rescue flow', body: 'A photo-first report flow routes an animal in need to nearby shelters and volunteers, with status tracked until resolved.' },
+      { title: 'AI care assistant', body: 'Injured or distressed animal? The assistant gives immediate, guided first-aid steps while help is on the way.' },
+      { title: 'Community and donations', body: 'A community feed and one-tap donation flow keep caretakers, donors, and shelters working from the same thread.' },
+      { title: 'Full design process', body: 'Every screen was designed through low-fidelity wireframes, medium-fidelity iterations, and a polished final pass — all shown above.' },
+    ],
+    stats: [
+      { value: '8', label: 'Designed screens' },
+      { value: '3', label: 'Fidelity stages each' },
+      { value: '24', label: 'Total design artifacts' },
+    ],
+  },
 };
