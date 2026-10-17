@@ -48,8 +48,8 @@ function renderMedia(project) {
 }
 
 function renderFidelityCompare(project) {
-  const first = project.media.screens[0];
   const folder = project.media.folder;
+  const first = project.media.screens.find((s) => s.key === 'home') || project.media.screens[0];
   return `
     <section class="case-section pt-compare-section">
       <div class="case-section-label"><span class="section-number">03</span><h2>From wireframe to final</h2></div>
@@ -88,9 +88,9 @@ function bindFidelityCompare(project) {
     const screen = project.media.screens.find((s) => s.key === key);
     if (!screen) return;
 
-    low.src = `/${folder}/lowfi/${key}.webp`;
-    medium.src = `/${folder}/medium/${key}.webp`;
-    final.src = `/${folder}/final/${key}.webp`;
+    low.src = `/portfolio26/${folder}/lowfi/${key}.webp`;
+    medium.src = `/portfolio26/${folder}/medium/${key}.webp`;
+    final.src = `/portfolio26/${folder}/final/${key}.webp`;
     low.alt = `${screen.label} low-fidelity wireframe`;
     medium.alt = `${screen.label} medium-fidelity design`;
     final.alt = `${screen.label} final design`;
