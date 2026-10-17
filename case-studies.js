@@ -24,9 +24,9 @@ export const projects = {
     problem:
       'In dense traffic and public spaces, a raised hand or a wave for help is easy to miss. Existing SOS flows depend on someone spotting the signal, then relaying location by voice. Seconds are lost at every handoff, and the person asking for help has no confirmation anyone saw them.',
     highlights: [
-      { image: '/portfolio26/key-highlights/ai-care.png', title: 'AI care assistant', body: 'Describe what\'s wrong and the AI assistant replies with immediate next steps, vet-backed food recommendations, and a clear line on when to call the vet.' },
-      { image: '/portfolio26/key-highlights/community.png', title: 'Community', body: 'Every shelter posts spending updates with receipts, so donors see exactly what their contribution funded and the impact it created.' },
-      { image: '/portfolio26/key-highlights/report-animal.png', title: 'Report an animal', body: 'A guided report flow: record or upload a video of the animal from a safe distance, and the location is picked up automatically for responders.' },
+      { image: '/portfolio26/portfolio26/key-highlights/ai-care.png', title: 'AI care assistant', body: 'Describe what\'s wrong and the AI assistant replies with immediate next steps, vet-backed food recommendations, and a clear line on when to call the vet.' },
+      { image: '/portfolio26/portfolio26/key-highlights/community.png', title: 'Community', body: 'Every shelter posts spending updates with receipts, so donors see exactly what their contribution funded and the impact it created.' },
+      { image: '/portfolio26/portfolio26/key-highlights/report-animal.png', title: 'Report an animal', body: 'A guided report flow: record or upload a video of the animal from a safe distance, and the location is picked up automatically for responders.' },
     ],
     stats: [
       { value: '0.92', label: 'Detection confidence' },
