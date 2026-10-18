@@ -2224,8 +2224,7 @@ a.case-crumb:hover {
   }
 
   .case-highlights .case-highlight-index {
-    order: -1;
-    margin-bottom: 0.5rem;
+    display: none;
   }
 
   .case-highlights .case-highlight-img {
