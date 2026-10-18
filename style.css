@@ -421,7 +421,6 @@ main {
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
-  perspective: 1000px;
   transition: opacity 0.4s ease;
 }
 
