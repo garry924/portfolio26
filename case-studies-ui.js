@@ -178,39 +178,33 @@ function bindGaurdianBg() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const tracks = Array.from(layer.querySelectorAll('.gd-track'));
-  let offset = 0;
-  let mult = 1;
-  let targetMult = 1;
+  // Each strip scrolls at its own rate (variable speed) for a layered feel.
+  const speeds = [0.35, 0.55, 0.8, 0.55, 0.35];
+  const currents = tracks.map(() => 0);
   let raf = 0;
-  let decayTimer = 0;
-  let last = performance.now();
 
-  const step = (now) => {
-    const dt = Math.min(64, now - last);
-    last = now;
-    mult += (targetMult - mult) * 0.06;
-    const track = tracks[0];
-    const loopWidth = track ? track.scrollWidth / 3 : 0;
-    if (loopWidth > 0) {
-      offset = (offset + (0.018 * dt * mult)) % loopWidth;
-      const x = -offset.toFixed(2);
-      tracks.forEach((t) => { t.style.transform = `translateX(${x}px)`; });
-    }
-    raf = window.requestAnimationFrame(step);
+  const animate = () => {
+    let settled = true;
+    tracks.forEach((track, i) => {
+      const loopWidth = track.scrollWidth / 3;
+      if (loopWidth <= 0) return;
+      const target = (window.scrollY * speeds[i]) % loopWidth;
+      currents[i] += (target - currents[i]) * 0.09;
+      if (currents[i] > loopWidth) currents[i] -= loopWidth;
+      if (Math.abs(target - currents[i]) > 0.1) settled = false;
+      track.style.transform = `translateX(${(-currents[i]).toFixed(2)}px)`;
+    });
+    raf = settled ? 0 : window.requestAnimationFrame(animate);
   };
 
   const onScroll = () => {
-    targetMult = 2;
-    window.clearTimeout(decayTimer);
-    decayTimer = window.setTimeout(() => { targetMult = 1; }, 180);
+    if (!raf) raf = window.requestAnimationFrame(animate);
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  raf = window.requestAnimationFrame(step);
 
   cleanupGaurdianBg = () => {
     window.removeEventListener('scroll', onScroll);
-    window.clearTimeout(decayTimer);
     if (raf) window.cancelAnimationFrame(raf);
     cleanupGaurdianBg = null;
   };

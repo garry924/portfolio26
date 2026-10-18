@@ -1660,7 +1660,7 @@ main {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.2;
 }
 
 .case-study-gaurdian .gd-rows {
@@ -1676,15 +1676,15 @@ main {
   position: absolute;
   left: 0;
   right: 0;
-  height: 260px;
+  height: 380px;
   overflow: hidden;
 }
 
-.case-study-gaurdian .gd-row:nth-child(1) { top: calc(50% - 640px); }
-.case-study-gaurdian .gd-row:nth-child(2) { top: calc(50% - 320px); }
-.case-study-gaurdian .gd-row:nth-child(3) { top: 50%; margin-top: -130px; }
-.case-study-gaurdian .gd-row:nth-child(4) { top: calc(50% + 320px); }
-.case-study-gaurdian .gd-row:nth-child(5) { top: calc(50% + 640px); }
+.case-study-gaurdian .gd-row:nth-child(1) { top: calc(50% - 190px - 860px); }
+.case-study-gaurdian .gd-row:nth-child(2) { top: calc(50% - 190px - 430px); }
+.case-study-gaurdian .gd-row:nth-child(3) { top: calc(50% - 190px); }
+.case-study-gaurdian .gd-row:nth-child(4) { top: calc(50% - 190px + 430px); }
+.case-study-gaurdian .gd-row:nth-child(5) { top: calc(50% - 190px + 860px); }
 
 .case-study-gaurdian .gd-track {
   display: flex;
@@ -1700,7 +1700,6 @@ main {
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: #fff;
-  opacity: 0.85;
   object-fit: cover;
 }
 
