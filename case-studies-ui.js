@@ -240,7 +240,6 @@ function renderCaseStudy(project) {
         ${project.highlights.map((h, hi) => `
           <article class="case-highlight${h.image ? ' case-highlight-media' : ''}">
             ${h.image ? `<img class="case-highlight-img" src="${esc(h.image)}" alt="${esc(h.title)} screen" loading="lazy" />` : ''}
-            <span class="case-highlight-index">0${hi + 1}</span>
             <h3>${esc(h.title)}</h3>
             <p>${esc(h.body)}</p>
           </article>`).join('')}
