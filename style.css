@@ -1712,6 +1712,13 @@ main {
 .case-study-aura-body .case-highlight h3,
 .case-study-aura-body .case-highlight p {
   color: #f7fbf8;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55), 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.case-study-aura-body .case-section-label .section-number,
+.case-study-aura-body .case-highlight-index {
+  color: #a9d9c5;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
 }
 
 .case-study-aura-body .case-section-label {
