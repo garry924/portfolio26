@@ -1715,6 +1715,14 @@ main {
   padding: clamp(1.5rem, 4vw, 3.25rem);
 }
 
+.case-study-gaurdian .section-number {
+  display: none;
+}
+
+.case-study-gaurdian .case-section-label h2 {
+  font-size: calc(1.5rem + 4px);
+}
+
 .case-study-body {
   position: relative;
   z-index: 1;
