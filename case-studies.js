@@ -123,14 +123,14 @@ export const projects = {
     ],
   },
   tripPlanner: {
-    slug: 'weekend-trip',
-    name: 'Weekend Trip',
+    slug: 'settlethat',
+    name: 'SettleThat',
     tagline: 'AI trip planning, bookings & shared expenses',
     tags: ['Product Design', 'AI / Travel'],
     url: null,
     media: { type: 'gallery' },
     overview:
-      'Weekend Trip is a shared workspace for planning a trip with friends: one place for AI-drafted itineraries, bookings, and settling shared expenses — designed so nobody has to be the group accountant.',
+      'SettleThat is a shared workspace for planning a trip with friends: one place for AI-drafted itineraries, bookings, and settling shared expenses — designed so nobody has to be the group accountant.',
     problem:
       'Group trips fragment across chat threads, spreadsheets, and five payment apps. Plans live in one place, money in another, and the person who booked everything is left chasing everyone else. The concept unifies planning and settlement in a single shared space.',
     highlights: [

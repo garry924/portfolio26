@@ -670,10 +670,10 @@ main {
   order: 1;
   cursor: default;
 }
-#card-pixelgame { order: 2; }
+#card-gaurdian { order: 2; }
 #card-aura { order: 3; }
 #card-valueline { order: 4; }
-#card-gaurdian { order: 5; }
+#card-pixelgame { order: 5; }
 #card-redthumb { order: 6; }
 
 .trip-project-image {
@@ -930,6 +930,16 @@ main {
   justify-content: space-between;
   align-items: flex-start;
   padding: 0 var(--s-1);
+}
+
+.settlethat-logo {
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 12px;
 }
 
 .project-info-left h3 {

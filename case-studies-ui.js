@@ -27,7 +27,7 @@ function renderMedia(project) {
     ];
     return `<div class="case-hero-media case-gallery">${shots.map(([file, label]) => `
       <figure class="case-gallery-item">
-        <img src="/portfolio26/upcoming-projects/${file}" alt="Weekend Trip ${label} screen" loading="lazy" />
+        <img src="/portfolio26/upcoming-projects/${file}" alt="SettleThat ${label} screen" loading="lazy" />
         <figcaption>${label}</figcaption>
       </figure>`).join('')}</div>`;
   }
