@@ -1648,13 +1648,72 @@ main {
    ============================================ */
 
 .case-study-view {
+  position: relative;
   display: block;
   padding-top: var(--nav-h);
   min-height: 100vh;
 }
 
+.case-study-gaurdian .gd-bg-marquee {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.case-study-gaurdian .gd-rows {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300vmax;
+  height: 300vmax;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.case-study-gaurdian .gd-row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 260px;
+  overflow: hidden;
+}
+
+.case-study-gaurdian .gd-row:nth-child(1) { top: calc(50% - 640px); }
+.case-study-gaurdian .gd-row:nth-child(2) { top: calc(50% - 320px); }
+.case-study-gaurdian .gd-row:nth-child(3) { top: 50%; margin-top: -130px; }
+.case-study-gaurdian .gd-row:nth-child(4) { top: calc(50% + 320px); }
+.case-study-gaurdian .gd-row:nth-child(5) { top: calc(50% + 640px); }
+
+.case-study-gaurdian .gd-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  height: 100%;
+  will-change: transform;
+}
+
+.case-study-gaurdian .gd-track img {
+  height: 100%;
+  width: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: #fff;
+  opacity: 0.85;
+  object-fit: cover;
+}
+
 .case-study-body {
   position: relative;
+  z-index: 1;
+}
+
+.case-hero,
+.case-study-body,
+.case-final {
+  position: relative;
+  z-index: 1;
 }
 
 .case-study-aura-body {

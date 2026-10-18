@@ -4,6 +4,7 @@ const view = document.getElementById('case-study-view');
 
 let lastFocused = null;
 let cleanupAuraParallax = null;
+let cleanupGaurdianBg = null;
 
 function esc(value) {
   const div = document.createElement('div');
@@ -46,6 +47,17 @@ function renderMedia(project) {
     </div>`;
   }
   return `<img class="case-hero-media" src="${project.media.src}" alt="${project.media.alt}" loading="lazy" />`;
+}
+
+function renderGaurdianBg(project) {
+  const folder = project.media.folder;
+  const tripled = [...project.media.screens, ...project.media.screens, ...project.media.screens];
+  const row = tripled.map((s) => `<img src="/portfolio26/${folder}/final/${esc(s.key)}.webp" alt="" loading="lazy" decoding="async" />`).join('');
+  return `<div class="gd-bg-marquee" data-gd-bg aria-hidden="true">
+    <div class="gd-rows">
+      ${Array.from({ length: 5 }, () => `<div class="gd-row"><div class="gd-track">${row}</div></div>`).join('')}
+    </div>
+  </div>`;
 }
 
 function renderFidelityCompare(project) {
@@ -160,8 +172,53 @@ function bindAuraParallax() {
   };
 }
 
+function bindGaurdianBg() {
+  const layer = view.querySelector('[data-gd-bg]');
+  if (!layer) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const tracks = Array.from(layer.querySelectorAll('.gd-track'));
+  let offset = 0;
+  let mult = 1;
+  let targetMult = 1;
+  let raf = 0;
+  let decayTimer = 0;
+  let last = performance.now();
+
+  const step = (now) => {
+    const dt = Math.min(64, now - last);
+    last = now;
+    mult += (targetMult - mult) * 0.06;
+    const track = tracks[0];
+    const loopWidth = track ? track.scrollWidth / 3 : 0;
+    if (loopWidth > 0) {
+      offset = (offset + (0.018 * dt * mult)) % loopWidth;
+      const x = -offset.toFixed(2);
+      tracks.forEach((t) => { t.style.transform = `translateX(${x}px)`; });
+    }
+    raf = window.requestAnimationFrame(step);
+  };
+
+  const onScroll = () => {
+    targetMult = 2;
+    window.clearTimeout(decayTimer);
+    decayTimer = window.setTimeout(() => { targetMult = 1; }, 180);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  raf = window.requestAnimationFrame(step);
+
+  cleanupGaurdianBg = () => {
+    window.removeEventListener('scroll', onScroll);
+    window.clearTimeout(decayTimer);
+    if (raf) window.cancelAnimationFrame(raf);
+    cleanupGaurdianBg = null;
+  };
+}
+
 function renderCaseStudy(project) {
   cleanupAuraParallax?.();
+  cleanupGaurdianBg?.();
   const cta = project.url
     ? `<a class="case-cta" href="${esc(project.url)}" target="_blank" rel="noopener noreferrer">
         <span>Go to Live Website</span>
@@ -210,6 +267,7 @@ function renderCaseStudy(project) {
 
   view.className = `case-study-view case-study-${project.slug}`;
   view.innerHTML = `
+    ${project.slug === 'gaurdian' ? renderGaurdianBg(project) : ''}
     <section class="case-hero">
       <nav class="case-breadcrumbs" aria-label="Breadcrumb">
         <a href="#/" class="case-crumb">Projects</a>
@@ -236,6 +294,7 @@ function renderCaseStudy(project) {
 
   if (project.media.type === 'fidelity') bindFidelityCompare(project);
   if (project.slug === 'aura') bindAuraParallax();
+  if (project.slug === 'gaurdian') bindGaurdianBg();
 }
 
 function slugForCard(card) {
@@ -260,6 +319,7 @@ function navigateFromHash() {
     view.querySelector('.case-crumb')?.focus?.();
   } else {
     cleanupAuraParallax?.();
+    cleanupGaurdianBg?.();
     document.body.classList.remove('case-open');
     view.hidden = true;
     view.innerHTML = '';
