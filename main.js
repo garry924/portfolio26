@@ -406,6 +406,8 @@ const competencyLabels = [
   'Systems Thinking'
 ];
 const competencyValues = [90, 85, 75, 85, 90, 85, 90];
+const competencySequence = [0, 6, 5, 4, 3, 2, 1];
+let competencyAnimationStarted = false;
 const competencyChart = new Chart(ctxChart, {
   type: 'radar',
   data: {
@@ -425,7 +427,11 @@ const competencyChart = new Chart(ctxChart, {
   options: {
     animation: {
       duration: 700,
-      easing: 'easeOutCubic'
+      easing: 'easeOutCubic',
+      delay: (ctx) => {
+        if (ctx.type !== 'data' || !competencyAnimationStarted) return 0;
+        return competencySequence.indexOf(ctx.dataIndex) * 180;
+      }
     },
     elements: {
       line: { tension: 0.28 }
@@ -461,8 +467,6 @@ const competencyChart = new Chart(ctxChart, {
   }
 });
 
-const competencySequence = [0, 6, 5, 4, 3, 2, 1];
-let competencyAnimationStarted = false;
 const animateCompetencyChart = () => {
   if (competencyAnimationStarted) return;
   competencyAnimationStarted = true;
@@ -473,12 +477,8 @@ const animateCompetencyChart = () => {
     return;
   }
 
-  competencySequence.forEach((index, sequenceIndex) => {
-    window.setTimeout(() => {
-      competencyChart.data.datasets[0].data[index] = competencyValues[index];
-      competencyChart.update();
-    }, sequenceIndex * 180);
-  });
+  competencyChart.data.datasets[0].data = [...competencyValues];
+  competencyChart.update();
 };
 
 const competencyObserver = new IntersectionObserver((entries) => {
