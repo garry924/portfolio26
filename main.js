@@ -406,6 +406,15 @@ const competencyLabels = [
   'Systems Thinking'
 ];
 const competencyValues = [90, 85, 75, 85, 90, 85, 90];
+const competencyPointColors = [
+  '#E8B04B',
+  '#4BA3E8',
+  '#E87F4B',
+  '#4BE8A9',
+  '#E84B6F',
+  '#B9E84B',
+  '#8F6FE8'
+];
 const competencySequence = [0, 6, 5, 4, 3, 2, 1];
 let competencyAnimationStarted = false;
 const competencyChart = new Chart(ctxChart, {
@@ -417,9 +426,9 @@ const competencyChart = new Chart(ctxChart, {
       data: competencyValues.map(() => 0),
       backgroundColor: 'rgba(17, 17, 17, 0.08)',
       borderColor: '#111111',
-      pointBackgroundColor: '#111111',
+      pointBackgroundColor: competencyPointColors,
       pointBorderColor: '#FAFAF7',
-      pointHoverBackgroundColor: '#CCFF00',
+      pointHoverBackgroundColor: competencyPointColors,
       pointHoverBorderColor: '#111111',
       borderWidth: 2
     }]
