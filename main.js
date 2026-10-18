@@ -396,21 +396,23 @@ const ctxChart = document.getElementById('competencyChart').getContext('2d');
 Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.color = '#999999';
 
-new Chart(ctxChart, {
+const competencyLabels = [
+  'UI/UX Design',
+  'Service Design',
+  'Python/AI Triage',
+  'Front-end (Vibe Coding)',
+  '3D/Blender',
+  'Behavioral Psych',
+  'Systems Thinking'
+];
+const competencyValues = [90, 85, 75, 85, 90, 85, 90];
+const competencyChart = new Chart(ctxChart, {
   type: 'radar',
   data: {
-    labels: [
-      'UI/UX Design',
-      'Service Design',
-      'Python/AI Triage',
-      'Front-end (Vibe Coding)',
-      '3D/Blender',
-      'Behavioral Psych',
-      'Systems Thinking'
-    ],
+    labels: competencyLabels,
     datasets: [{
       label: 'Skill Proficiency',
-      data: [90, 85, 75, 85, 90, 85, 90],
+      data: competencyValues.map(() => 0),
       backgroundColor: 'rgba(17, 17, 17, 0.08)',
       borderColor: '#111111',
       pointBackgroundColor: '#111111',
@@ -421,6 +423,13 @@ new Chart(ctxChart, {
     }]
   },
   options: {
+    animation: {
+      duration: 700,
+      easing: 'easeOutCubic'
+    },
+    elements: {
+      line: { tension: 0.28 }
+    },
     scales: {
       r: {
         angleLines: { color: 'rgba(0, 0, 0, 0.06)' },
@@ -451,6 +460,34 @@ new Chart(ctxChart, {
     }
   }
 });
+
+const competencySequence = [0, 6, 1, 2, 3, 4, 5];
+let competencyAnimationStarted = false;
+const animateCompetencyChart = () => {
+  if (competencyAnimationStarted) return;
+  competencyAnimationStarted = true;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    competencyChart.data.datasets[0].data = [...competencyValues];
+    competencyChart.update('none');
+    return;
+  }
+
+  competencySequence.forEach((index, sequenceIndex) => {
+    window.setTimeout(() => {
+      competencyChart.data.datasets[0].data[index] = competencyValues[index];
+      competencyChart.update();
+    }, sequenceIndex * 180);
+  });
+};
+
+const competencyObserver = new IntersectionObserver((entries) => {
+  if (entries.some((entry) => entry.isIntersecting)) {
+    animateCompetencyChart();
+    competencyObserver.disconnect();
+  }
+}, { threshold: 0.45 });
+competencyObserver.observe(document.getElementById('competencyChart'));
 
 // --- PROJECT SOCIAL LIKES & GOOGLE SHEET BACKEND ---
 const GOOGLE_SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbwYvLGB-mOJtvm5Ed2Zxi8PjR2EWzoCe_6lLYJOJYTBxAEO9SPWrg_Y54n55_ejdvunxg/exec';
