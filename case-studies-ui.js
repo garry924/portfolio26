@@ -128,7 +128,6 @@ function renderCaseStudy(project) {
   ];
   if (project.media.type === 'fidelity') sections.push({ title: 'From wireframe to final', compare: true });
   sections.push({ title: 'Key Highlights', highlights: true });
-  sections.push({ title: 'By the Numbers', stats: true });
 
   const sectionsHtml = sections.map((section, i) => {
     const number = String(i + 1).padStart(2, '0');
@@ -162,6 +161,7 @@ function renderCaseStudy(project) {
       </section>`;
   });
 
+  view.className = `case-study-view case-study-${project.slug}`;
   view.innerHTML = `
     <section class="case-hero">
       <nav class="case-breadcrumbs" aria-label="Breadcrumb">
@@ -176,7 +176,9 @@ function renderCaseStudy(project) {
       </div>
       <div class="case-hero-visual">${renderMedia(project)}</div>
     </section>
-    ${sectionsHtml.join('')}
+    <div class="case-study-body${project.slug === 'aura' ? ' case-study-aura-body' : ''}">
+      ${sectionsHtml.join('')}
+    </div>
     <section class="case-final">
       <p class="case-final-lead">${project.url ? 'Explore the full experience on the live site.' : 'This is a concept design — process work shown above.'}</p>
       ${cta}

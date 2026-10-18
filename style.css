@@ -1653,6 +1653,59 @@ main {
   min-height: 100vh;
 }
 
+.case-study-body {
+  position: relative;
+}
+
+.case-study-aura-body {
+  isolation: isolate;
+  padding: var(--s-3);
+  border-radius: calc(var(--radius) + 4px);
+  background-image: linear-gradient(rgba(7, 20, 24, 0.46), rgba(7, 20, 24, 0.46)), url('/portfolio26/Zoomed aura earbud bg.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.case-study-aura-body .case-section {
+  position: relative;
+  z-index: 1;
+  margin: var(--s-3) 0;
+  padding: var(--s-4);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius);
+  background: rgba(7, 20, 24, 0.82);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.case-study-aura-body .case-section-label h2,
+.case-study-aura-body .case-body,
+.case-study-aura-body .case-highlight h3,
+.case-study-aura-body .case-highlight p {
+  color: #f7fbf8;
+}
+
+.case-study-aura-body .case-section-label {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.case-study-aura-body .case-section-label .section-number,
+.case-study-aura-body .case-highlight-index {
+  color: #a9d9c5;
+}
+
+.case-study-aura-body .case-highlight {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.case-study-aura-body .case-highlight:hover {
+  border-color: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+
 .case-study-view[hidden] {
   display: none;
 }
