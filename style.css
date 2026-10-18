@@ -1779,8 +1779,8 @@ main {
   padding: clamp(1.5rem, 4vw, 3.25rem);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg, 20px);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.46);
+  box-shadow: none;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
@@ -1789,13 +1789,13 @@ main {
 .case-study-aura-body .case-body,
 .case-study-aura-body .case-highlight h3,
 .case-study-aura-body .case-highlight p {
-  color: #f7fbf8;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55), 0 0 12px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  text-shadow: none;
 }
 
 .case-study-aura-body .case-section-label h2 {
   font-size: 2rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 0 16px rgba(0, 0, 0, 0.45);
+  text-shadow: none;
 }
 
 .case-study-aura-body .case-section-label .section-number,
@@ -1813,14 +1813,15 @@ main {
 }
 
 .case-study-aura-body .case-highlight {
-  border-color: rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.38);
+  box-shadow: none;
   backdrop-filter: blur(8px);
 }
 
 .case-study-aura-body .case-highlight:hover {
   border-color: rgba(255, 255, 255, 0.42);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 
 
