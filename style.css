@@ -2206,18 +2206,8 @@ a.case-crumb:hover {
    ============================================ */
 
 @media (max-width: 700px) {
-  .pt-compare {
-    grid-template-columns: 1fr;
-  }
-
   .pt-shot {
     width: 122px;
-  }
-}
-
-@media (max-width: 900px) {
-  .case-highlights {
-    grid-template-columns: 1fr;
   }
 }
 
