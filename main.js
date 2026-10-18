@@ -461,7 +461,7 @@ const competencyChart = new Chart(ctxChart, {
   }
 });
 
-const competencySequence = [0, 6, 1, 2, 3, 4, 5];
+const competencySequence = [0, 6, 5, 4, 3, 2, 1];
 let competencyAnimationStarted = false;
 const animateCompetencyChart = () => {
   if (competencyAnimationStarted) return;
