@@ -189,9 +189,13 @@ function bindGaurdianBg() {
       const loopWidth = track.scrollWidth / 3;
       if (loopWidth <= 0) return;
       const target = (window.scrollY * speeds[i]) % loopWidth;
-      currents[i] += (target - currents[i]) * 0.09;
-      if (currents[i] > loopWidth) currents[i] -= loopWidth;
-      if (Math.abs(target - currents[i]) > 0.1) settled = false;
+      let delta = target - currents[i];
+      if (delta > loopWidth / 2) delta -= loopWidth;
+      if (delta < -loopWidth / 2) delta += loopWidth;
+      currents[i] += delta * 0.09;
+      if (currents[i] >= loopWidth) currents[i] -= loopWidth;
+      if (currents[i] < 0) currents[i] += loopWidth;
+      if (Math.abs(delta) > 0.1) settled = false;
       track.style.transform = `translateX(${(-currents[i]).toFixed(2)}px)`;
     });
     raf = settled ? 0 : window.requestAnimationFrame(animate);
