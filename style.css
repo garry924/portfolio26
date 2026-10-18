@@ -1660,7 +1660,7 @@ main {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.2;
+  opacity: 0.05;
 }
 
 .case-study-gaurdian .gd-rows {
