@@ -3,6 +3,7 @@ import { projects } from './case-studies.js';
 const view = document.getElementById('case-study-view');
 
 let lastFocused = null;
+let cleanupAuraParallax = null;
 
 function esc(value) {
   const div = document.createElement('div');
@@ -114,7 +115,53 @@ function bindFidelityCompare(project) {
   });
 }
 
+function bindAuraParallax() {
+  const stage = view.querySelector('.case-study-aura-body');
+  const content = view.querySelector('.case-study-aura-content');
+  if (!stage || !content) return;
+
+  let frame = 0;
+  let currentBackgroundShift = 0;
+  let currentContentShift = 0;
+  let targetBackgroundShift = 0;
+  let targetContentShift = 0;
+
+  const updateTarget = () => {
+    const bounds = stage.getBoundingClientRect();
+    const progress = Math.max(-1, Math.min(1, (window.innerHeight * 0.5 - (bounds.top + bounds.height * 0.5)) / (window.innerHeight + bounds.height)));
+    targetBackgroundShift = progress * -110;
+    targetContentShift = progress * 18;
+
+    if (!frame) frame = window.requestAnimationFrame(animate);
+  };
+
+  const animate = () => {
+    currentBackgroundShift += (targetBackgroundShift - currentBackgroundShift) * 0.12;
+    currentContentShift += (targetContentShift - currentContentShift) * 0.12;
+    stage.style.setProperty('--aura-bg-shift', `${currentBackgroundShift.toFixed(2)}px`);
+    content.style.setProperty('--aura-content-shift', `${currentContentShift.toFixed(2)}px`);
+
+    if (Math.abs(targetBackgroundShift - currentBackgroundShift) > 0.05 || Math.abs(targetContentShift - currentContentShift) > 0.05) {
+      frame = window.requestAnimationFrame(animate);
+    } else {
+      frame = 0;
+    }
+  };
+
+  window.addEventListener('scroll', updateTarget, { passive: true });
+  window.addEventListener('resize', updateTarget);
+  updateTarget();
+
+  cleanupAuraParallax = () => {
+    window.removeEventListener('scroll', updateTarget);
+    window.removeEventListener('resize', updateTarget);
+    if (frame) window.cancelAnimationFrame(frame);
+    cleanupAuraParallax = null;
+  };
+}
+
 function renderCaseStudy(project) {
+  cleanupAuraParallax?.();
   const cta = project.url
     ? `<a class="case-cta" href="${esc(project.url)}" target="_blank" rel="noopener noreferrer">
         <span>Go to Live Website</span>
@@ -177,7 +224,9 @@ function renderCaseStudy(project) {
       <div class="case-hero-visual">${renderMedia(project)}</div>
     </section>
     <div class="case-study-body${project.slug === 'aura' ? ' case-study-aura-body' : ''}">
+      ${project.slug === 'aura' ? '<div class="case-study-aura-bg" aria-hidden="true"></div><div class="case-study-aura-content">' : ''}
       ${sectionsHtml.join('')}
+      ${project.slug === 'aura' ? '</div>' : ''}
     </div>
     <section class="case-final">
       <p class="case-final-lead">${project.url ? 'Explore the full experience on the live site.' : 'This is a concept design — process work shown above.'}</p>
@@ -186,6 +235,7 @@ function renderCaseStudy(project) {
   `;
 
   if (project.media.type === 'fidelity') bindFidelityCompare(project);
+  if (project.slug === 'aura') bindAuraParallax();
 }
 
 function slugForCard(card) {
@@ -209,6 +259,7 @@ function navigateFromHash() {
     window.scrollTo({ top: 0, behavior: 'auto' });
     view.querySelector('.case-crumb')?.focus?.();
   } else {
+    cleanupAuraParallax?.();
     document.body.classList.remove('case-open');
     view.hidden = true;
     view.innerHTML = '';

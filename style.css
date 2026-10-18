@@ -1658,25 +1658,53 @@ main {
 }
 
 .case-study-aura-body {
+  position: relative;
   isolation: isolate;
-  padding: var(--s-3);
-  border-radius: calc(var(--radius) + 4px);
-  background-image: linear-gradient(rgba(7, 20, 24, 0.46), rgba(7, 20, 24, 0.46)), url('/portfolio26/Zoomed aura earbud bg.webp');
-  background-position: center;
+  width: 100vw;
+  min-height: 125vh;
+  margin-left: calc(50% - 50vw);
+  padding: clamp(4rem, 9vw, 9rem) max(1.25rem, 7vw);
+  overflow: hidden;
+  background: #071418;
+}
+
+.case-study-aura-bg {
+  position: absolute;
+  z-index: -2;
+  inset: -12vh 0;
+  background-image: linear-gradient(rgba(7, 20, 24, 0.5), rgba(7, 20, 24, 0.5)), url('/portfolio26/Zoomed aura earbud bg.webp');
+  background-position: center calc(50% + var(--aura-bg-shift, 0px));
   background-size: cover;
   background-repeat: no-repeat;
+  transform: scale(1.08);
+  will-change: background-position;
+}
+
+.case-study-aura-body::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 20, 24, 0.22), rgba(7, 20, 24, 0.58) 60%, rgba(7, 20, 24, 0.86));
+  content: '';
+}
+
+.case-study-aura-content {
+  max-width: 980px;
+  margin: 0 auto;
+  transform: translateY(var(--aura-content-shift, 0px));
+  will-change: transform;
 }
 
 .case-study-aura-body .case-section {
   position: relative;
   z-index: 1;
-  margin: var(--s-3) 0;
-  padding: var(--s-4);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  margin: var(--s-4) 0;
+  padding: clamp(1.5rem, 4vw, 3.25rem);
+  border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: var(--radius);
-  background: rgba(7, 20, 24, 0.82);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(10px);
+  background: rgba(7, 20, 24, 0.76);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(12px);
 }
 
 .case-study-aura-body .case-section-label h2,
