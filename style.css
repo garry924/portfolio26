@@ -2209,6 +2209,40 @@ a.case-crumb:hover {
   .pt-shot {
     width: 122px;
   }
+
+  .case-highlights .case-highlight {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-highlights .case-highlight-media {
+    padding: 0;
+  }
+
+  .case-highlights .case-highlight-index {
+    order: -1;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-highlights .case-highlight-img {
+    aspect-ratio: 440 / 956;
+    object-fit: contain;
+    background: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-highlights .case-highlight h3 {
+    font-size: 0.95rem;
+  }
+
+  .case-highlights .case-highlight p {
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
 }
 
 @media (max-width: 700px) {
