@@ -1775,11 +1775,12 @@ main {
 .case-study-aura-body .case-section {
   position: relative;
   z-index: 1;
+  margin-top: 0;
   margin-bottom: 50px;
   padding: clamp(1.5rem, 4vw, 3.25rem);
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.84);
   border-radius: var(--radius-lg, 20px);
-  background: rgba(255, 255, 255, 0.42);
+  background: rgba(255, 255, 255, 0.64);
   box-shadow: none;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -1813,8 +1814,8 @@ main {
 }
 
 .case-study-aura-body .case-highlight {
-  border-color: rgba(255, 255, 255, 0.72);
-  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.5);
   box-shadow: none;
   backdrop-filter: blur(8px);
 }
