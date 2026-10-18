@@ -1660,7 +1660,7 @@ main {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.05;
+  background: var(--bg);
 }
 
 .case-study-gaurdian .gd-rows {
@@ -1698,9 +1698,19 @@ main {
   height: 100%;
   width: auto;
   border-radius: var(--radius);
-  border: 1px solid var(--border);
+  border: 0;
   background: #fff;
   object-fit: cover;
+  opacity: 0.05;
+}
+
+.case-study-gaurdian .case-section {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg, 20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
 .case-study-body {
